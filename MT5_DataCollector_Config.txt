@@ -1,0 +1,95 @@
+# MT5 Data Collector Configuration Guide
+
+## Basic Script (MT5_DataCollector.mq5)
+This script collects data based on simple moving average conditions.
+
+### Key Features:
+- Two moving averages (fast and slow)
+- Crossover detection
+- Trend change detection
+- CSV output with OHLCV data
+- Customizable parameters
+
+### Input Parameters:
+- MA_Period_1: First MA period (default: 20)
+- MA_Period_2: Second MA period (default: 50)
+- MA_Method: MA calculation method (SMA, EMA, etc.)
+- MA_Price: Applied price (Close, Open, etc.)
+- Data_Collection_Points: Maximum data points to collect
+- File_Name: Output CSV filename
+- Collect_On_Cross: Enable crossover collection
+- Collect_On_Trend: Enable trend change collection
+- Min_Price_Distance: Minimum price distance for collection
+
+## Advanced Script (MT5_AdvancedDataCollector.mq5)
+This script provides more sophisticated data collection with multiple indicators.
+
+### Key Features:
+- Three moving averages (fast, slow, trend)
+- Multiple collection conditions
+- Time and volume filtering
+- RSI and ATR calculations
+- Price action analysis
+- Enhanced CSV output
+
+### Input Parameters:
+- MA_Fast_Period: Fast MA period (default: 10)
+- MA_Slow_Period: Slow MA period (default: 20)
+- MA_Trend_Period: Trend MA period (default: 50)
+- Max_Data_Points: Maximum data points (default: 5000)
+- Output_File: Output filename
+- Collect_Crossovers: Enable crossover collection
+- Collect_Trend_Changes: Enable trend change collection
+- Collect_Price_Action: Enable price action collection
+- Min_Volume: Minimum volume filter
+- Use_Time_Filter: Enable time-based filtering
+- Start_Hour/End_Hour: Time filter range
+
+## Usage Instructions:
+
+1. Copy the .mq5 files to your MetaTrader 5 Scripts folder
+2. Compile the scripts in MetaEditor
+3. Run the script on your desired chart
+4. Configure the input parameters as needed
+5. The script will create a CSV file with collected data
+
+## Output CSV Format:
+- Time: Bar timestamp
+- Open, High, Low, Close: OHLC prices
+- Volume: Tick volume
+- MA_Fast, MA_Slow, MA_Trend: Moving average values
+- MA_Diff: Difference between fast and slow MA
+- Cross_Type: Type of crossover (BULLISH/BEARISH/NONE)
+- Trend_Type: Current trend (BULL/BEAR/NEUTRAL)
+- Price_Action: Price action type
+- RSI: Relative Strength Index
+- ATR: Average True Range
+
+## Strategy Examples:
+
+### Golden Cross Strategy:
+- MA_Period_1: 50 (slow MA)
+- MA_Period_2: 200 (very slow MA)
+- Collect_On_Cross: true
+- Collect_On_Trend: true
+
+### Scalping Strategy:
+- MA_Fast_Period: 5
+- MA_Slow_Period: 10
+- MA_Trend_Period: 20
+- Min_Price_Move: 0.0001
+- Use_Time_Filter: true
+- Start_Hour: 9, End_Hour: 17
+
+### Trend Following Strategy:
+- MA_Fast_Period: 20
+- MA_Slow_Period: 50
+- MA_Trend_Period: 100
+- Collect_Trend_Changes: true
+- Collect_Price_Action: true
+
+## Notes:
+- Ensure you have sufficient historical data
+- Adjust parameters based on your trading strategy
+- Monitor the output file size for large datasets
+- Use appropriate timeframes for your strategy
